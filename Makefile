@@ -21,5 +21,5 @@ all:
 
 debug: 
 	@$(CXX) $(CXXFLAGS) $(EIGEN_FLAGS) $(SDL_CFLAGS) -o $(TARGET) $(SRC) $(SDL_LDFLAGS) $(SERIALIZATION_FLAGS);
-	@valgrind --show-leak-kinds=all ./$(TARGET); 
+	@valgrind --leak-check=full ./$(TARGET); 
 	@rm -f $(TARGET);

@@ -44,26 +44,15 @@ private:
 		players[id].pos[1] = rain->get_height() - 15;
 
 		// Vamos definir aqui o que fazer com a "mente do jogador".
-		NeuralNetwork nn("nn0.bin");
 
 		// Testar salvamento
-		while(
-			running_flags[id]
-		){
-
-
-
-
-
-
-
-
-
-			SDL_Delay(50);
-		}
+		// while(
+		// 	running_flags[id]
+		// ){
+		// 	SDL_Delay(50);
+		// }
 
 		var--;
-		fprintf(stderr, "\nSai da thread %d", id);
 	}
 
 public:
@@ -82,7 +71,10 @@ public:
 		){
 
 			running_flags[i] = False;
-			if(workers[i].joinable()){
+			if(
+				workers[i].joinable()
+			){
+				
 				workers[i].join();
 			}
 		}
@@ -133,7 +125,6 @@ public:
 			p.rect.x = p.pos[0];
 			p.rect.y = p.pos[1];
 
-			// O ponto é que este valor aqui necessita de um mutex.
 			mtx.lock();
 			SDL_SetRenderDrawColor(renderer, 
 											p.r,
